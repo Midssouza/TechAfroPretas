@@ -1,6 +1,6 @@
 package aulas;
 
-import java.util.Scanner;
+import java.util.Scanner;   /*CÓDIGO CONTEM ERRO VOU ANALIZAR */
 
 public class Aula_35 {
 
