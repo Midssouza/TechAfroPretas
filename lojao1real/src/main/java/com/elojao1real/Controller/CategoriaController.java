@@ -15,8 +15,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.elojao1real.Model.Categoria;
-import com.elojao1real.Repository.Categoria.CategoriaRepository;
+import com.elojao1real.Model.CategoriaModel;
+import com.elojao1real.Repository.CategoriaRepository;
 
 import jakarta.validation.Valid;
 
@@ -31,28 +31,28 @@ public class CategoriaController {
 	private CategoriaRepository repository;
 	
 	@GetMapping
-	public ResponseEntity<List<Categoria>> getAll(){
+	public ResponseEntity<List<CategoriaModel>> getAll(){
 		return ResponseEntity.ok(repository.findAll());
 	}
 	
 	@GetMapping("/{id}")
-	public ResponseEntity<Categoria> getById(@PathVariable Long id){
+	public ResponseEntity<CategoriaModel> getById(@PathVariable Long id){
 		return repository.findById(id).map(resp -> ResponseEntity.ok(resp))
 				.orElse(ResponseEntity.notFound().build());
 	}
 	
 	@GetMapping("/categorias/{categorias}")
-	public ResponseEntity<List<Categoria>> getByName(@PathVariable String categorias){
+	public ResponseEntity<List<CategoriaModel>> getByName(@PathVariable String categorias){
 		return ResponseEntity.ok(repository.findAllByCategoriasContainingIgnoreCase(categorias));
 	}
 
 	@PostMapping
-	public ResponseEntity<Categoria> postTema(@Valid @RequestBody Categoria categorias) {
+	public ResponseEntity<CategoriaModel> postTema(@Valid @RequestBody CategoriaModel categorias) {
 		return ResponseEntity.status(HttpStatus.CREATED).body(repository.save(categorias));
 	} 
 	
 	@PutMapping
-	public ResponseEntity<Categoria> put (@RequestBody Categoria categorias){
+	public ResponseEntity<CategoriaModel> put (@RequestBody CategoriaModel categorias){
 		return ResponseEntity.ok(repository.save(categorias));
 	}
 	

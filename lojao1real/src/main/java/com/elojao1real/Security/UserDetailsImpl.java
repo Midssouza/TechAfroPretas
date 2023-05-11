@@ -3,7 +3,11 @@ package com.elojao1real.Security;
 import java.util.Collection;
 import java.util.List;
 
-import com.elojao1real.Controller.Usuario;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+
+
+import com.elojao1real.Model.UsuarioModel;
 
 public class UserDetailsImpl implements UserDetails{
 private static final long serialVersionUID =1L;
@@ -13,7 +17,7 @@ private static final long serialVersionUID =1L;
 	
 	private List<GrantedAuthority> authorities;
 	
-	public UserDetailsImpl (Usuario user){
+	public UserDetailsImpl (UsuarioModel user){
 		this.userName = user.getUsuario();
 		this.password = user.getSenha();
 	}

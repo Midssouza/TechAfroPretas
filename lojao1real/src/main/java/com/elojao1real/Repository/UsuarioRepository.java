@@ -11,4 +11,5 @@ import com.elojao1real.Model.UsuarioModel;
 @Repository
 public interface UsuarioRepository extends JpaRepository<UsuarioModel, Long>{
 	public Optional<UsuarioModel> findByUsuario(@Param ("usuario")String usuario);
+
 }
