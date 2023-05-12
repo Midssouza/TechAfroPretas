@@ -1,6 +1,6 @@
 package com.elojao1real.service;
 
-import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 import java.util.Base64;
 import java.util.Optional;
 
@@ -95,11 +95,15 @@ public class UsuarioService {
     private String gerarBasicToken(String usuario, String senha) {
 
         String token = usuario + ":" + senha;
-        byte[] tokenBase64 = Base64.encodeBase64(token.getBytes(Charset.forName("US-ASCII")));
-        return "Basic " + new String(tokenBase64);
+        byte[] tokenBytes = token.getBytes(StandardCharsets.US_ASCII);
+        String tokenBase64 = Base64.getEncoder().encodeToString(tokenBytes);
+        return "Basic " + tokenBase64;
 
     }
 
-}
+
+    }
+
+
 	
 
